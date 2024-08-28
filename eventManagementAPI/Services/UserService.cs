@@ -1,4 +1,5 @@
 ﻿using eventManagementAPI.Data;
+using eventManagementAPI.DTOs;
 using eventManagementAPI.Models;
 using eventManagementAPI.Services.IServices;
 
@@ -21,6 +22,11 @@ namespace eventManagementAPI.Services
         public async Task<User> GetUserByIdAsync(int id)
         {
             return await _unitOfWork.Users.GetUserByIdAsync(id);
+        }
+
+        public async Task<IEnumerable<User>> GetPagedUsersAsync(int pageNumber, int pageSize, string filterField = null, string filterValue = null, string orderByField = null, bool ascending = true)
+        {
+            return await _unitOfWork.Users.GetPagedUsersAsync(pageNumber, pageSize, filterField, filterValue, orderByField, ascending);
         }
 
         public async Task<User> CreateUserAsync(User user)

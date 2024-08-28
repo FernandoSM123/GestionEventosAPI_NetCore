@@ -33,7 +33,7 @@ namespace eventManagementAPI.Data
             modelBuilder.Entity<UserType>(entity =>
             {
                 entity.ToTable("user_types");
-                entity.Property(e => e.id).HasColumnName("user_type_id");
+                entity.Property(e => e.id).HasColumnName("pk_user_types");
                 entity.Property(e => e.name).HasColumnName("user_type_name");
                 entity.Property(e => e.description).HasColumnName("user_type_description");
             });

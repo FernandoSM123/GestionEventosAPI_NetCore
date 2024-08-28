@@ -4,6 +4,7 @@ using eventManagementAPI.Repositories.IRepositories;
 using eventManagementAPI.Repositories;
 using eventManagementAPI.Services;
 using eventManagementAPI.Services.IServices;
+using eventManagementAPI.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddControllers();
 // Configurar Entity Framework y SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configurar AutoMapper
+builder.Services.AddAutoMapper(typeof(eventManagementMapper));
 
 
 // Registrar el UnitOfWork y los Repositorios

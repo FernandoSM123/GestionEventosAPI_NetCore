@@ -1,3 +1,7 @@
+-- Cerrar todas las conexiones activas a la base de datos
+ALTER DATABASE event_management SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
 -- Elimina la base de datos si ya existe
 IF EXISTS (SELECT name FROM sys.databases WHERE name = N'event_management')
 BEGIN

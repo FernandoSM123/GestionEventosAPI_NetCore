@@ -1,10 +1,3 @@
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.csproj.AssemblyReference.cache
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.AssemblyInfoInputs.cache
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.AssemblyInfo.cs
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.csproj.CoreCompileInputs.cache
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\eventManagementAPI.exe
@@ -12,8 +5,12 @@ C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\De
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\eventManagementAPI.runtimeconfig.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\eventManagementAPI.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\eventManagementAPI.pdb
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Bogus.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Humanizer.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -120,6 +117,14 @@ C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\De
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.csproj.AssemblyReference.cache
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.AssemblyInfoInputs.cache
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.AssemblyInfo.cs
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.csproj.CoreCompileInputs.cache
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.sourcelink.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\staticwebassets\msbuild.eventManagementAPI.Microsoft.AspNetCore.StaticWebAssets.props
@@ -134,5 +139,3 @@ C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\De
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.pdb
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.genruntimeconfig.cache
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\ref\eventManagementAPI.dll
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll
-C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Bogus.dll

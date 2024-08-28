@@ -1,4 +1,6 @@
-﻿using eventManagementAPI.Models;
+﻿using AutoMapper;
+using eventManagementAPI.DTOs;
+using eventManagementAPI.Models;
 using eventManagementAPI.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +11,20 @@ namespace eventManagementAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
+            var userDTOs = _mapper.Map<IEnumerable<UserDTO>>(users);
+            return Ok(userDTOs);
         }
 
         [HttpGet("{id}")]
@@ -30,7 +35,16 @@ namespace eventManagementAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(user);
+            var userDTO = _mapper.Map<UserDTO>(user);
+            return Ok(userDTO);
+        }
+
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPagedUsers(int pageNumber = 1, int pageSize = 10, string filterField = null, string filterValue = null, string orderByField = null, bool ascending = true)
+        {
+            var users = await _userService.GetPagedUsersAsync(pageNumber, pageSize, filterField, filterValue, orderByField, ascending);
+            var userDTOs = _mapper.Map<IEnumerable<UserDTO>>(users);
+            return Ok(userDTOs);
         }
 
         [HttpPost]
