@@ -66,5 +66,12 @@ namespace eventManagementAPI.Repositories
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _context.Users
+                .Include(u => u.userType)
+                .FirstOrDefaultAsync(u => u.email == email);
+        }
     }
 }

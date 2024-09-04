@@ -48,26 +48,83 @@ namespace eventManagementAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(User user)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserDTO createUserDTO)
         {
-            var createdUser = await _userService.CreateUserAsync(user);
-            if (createdUser == null)
+            //verificar validaciones
+            if (!ModelState.IsValid)
             {
-                return BadRequest("User could not be created");
+                return BadRequest(ModelState);
             }
-            return CreatedAtAction(nameof(GetUserById), new { id = createdUser.id }, createdUser);
+
+            var user = _mapper.Map<User>(createUserDTO);
+
+            try
+            {
+                var createdUser = await _userService.CreateUserAsync(user);
+                var createdUserDTO = _mapper.Map<UserDTO>(createdUser);
+                return CreatedAtAction(nameof(GetUserById), new { id = createdUserDTO.Id }, createdUserDTO);
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError("Email", ex.Message);
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User user)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDTO updateUserDTO)
         {
-            var success = await _userService.UpdateUserAsync(id, user);
-            if (!success)
+            // Verificar si el modelo es válido
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Obtener el usuario existente por ID
+            var existingUser = await _userService.GetUserByIdAsync(id);
+            if (existingUser == null)
             {
                 return NotFound();
             }
+
+            // Verificar si el correo electrónico ya está en uso por otro usuario
+            if (!string.IsNullOrWhiteSpace(updateUserDTO.Email) && existingUser.email != updateUserDTO.Email)
+            {
+                // Si el correo ha cambiado, verificar si ya existe
+                var emailExists = await _userService.EmailExistsAsync(updateUserDTO.Email);
+                if (emailExists)
+                {
+                    ModelState.AddModelError("Email", "Email already exists.");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            // Mapear el DTO al modelo de usuario existente
+            _mapper.Map(updateUserDTO, existingUser);
+
+            // Encriptar la contraseña si se proporciona una nueva
+            if (!string.IsNullOrWhiteSpace(updateUserDTO.Password))
+            {
+                existingUser.password = BCrypt.Net.BCrypt.HashPassword(updateUserDTO.Password);
+            }
+
+            try
+            {
+                var success = await _userService.UpdateUserAsync(id, existingUser);
+                if (!success)
+                {
+                    return BadRequest("User could not be updated");
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError("Email", ex.Message);
+                return BadRequest(ModelState);
+            }
+
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

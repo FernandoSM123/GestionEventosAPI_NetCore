@@ -12,5 +12,6 @@ namespace eventManagementAPI.Repositories.IRepositories
         void UpdateUser(User user);
         void DeleteUser(User user);
         Task<bool> SaveChangesAsync();
+        Task<User> GetUserByEmailAsync(string email);
     }
 }

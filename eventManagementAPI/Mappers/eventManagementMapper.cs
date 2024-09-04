@@ -10,6 +10,8 @@ namespace eventManagementAPI.Mappers
         {
             CreateMap<User, UserDTO>().ReverseMap();
             CreateMap<UserType, UserTypeDTO>().ReverseMap();
+            CreateMap<User, CreateUserDTO>().ReverseMap();
+            CreateMap<User, UpdateUserDTO>().ReverseMap();
         }
     }
 }

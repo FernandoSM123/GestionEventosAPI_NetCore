@@ -11,5 +11,6 @@ namespace eventManagementAPI.Services.IServices
         Task<User> CreateUserAsync(User user);
         Task<bool> UpdateUserAsync(int id, User user);
         Task<bool> DeleteUserAsync(int id);
+        Task<bool> EmailExistsAsync(string email);
     }
 }
