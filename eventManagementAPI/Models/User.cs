@@ -35,5 +35,8 @@ namespace eventManagementAPI.Models
         // Definición de la relación con UserType
         [ForeignKey("userTypeId")]
         public UserType userType { get; set; }
+
+        // Relación con los tokens generados para este usuario
+        public ICollection<Token> Tokens { get; set; } = new List<Token>();
     }
 }

@@ -5,6 +5,7 @@ namespace eventManagementAPI.Services.IServices
 {
     public interface IAuthService
     {
-        Task<User> AuthenticateUserAsync(LoginDTO loginDto);
+        Task<(string, User)> AuthenticateUserAsync(LoginDTO loginDto);
+        Task LogoutAsync(int userId);
     }
 }

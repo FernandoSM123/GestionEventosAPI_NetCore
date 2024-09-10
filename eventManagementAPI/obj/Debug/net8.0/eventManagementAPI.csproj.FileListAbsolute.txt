@@ -139,3 +139,4 @@ C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\De
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.pdb
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\eventManagementAPI.genruntimeconfig.cache
 C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\obj\Debug\net8.0\ref\eventManagementAPI.dll
+C:\Users\bfgf1\Documents\C#\ASP NET\eventManagementAPI\eventManagementAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

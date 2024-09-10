@@ -2,10 +2,12 @@
 using eventManagementAPI.DTOs;
 using eventManagementAPI.Models;
 using eventManagementAPI.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eventManagementAPI.Controllers
 {
+    [Authorize] // Atributo que protege todas las rutas del controlador
     [ApiController]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase

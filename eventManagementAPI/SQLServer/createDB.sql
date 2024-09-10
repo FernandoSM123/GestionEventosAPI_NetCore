@@ -1,4 +1,8 @@
 -- Cerrar todas las conexiones activas a la base de datos
+USE master;
+GO
+
+-- Cerrar todas las conexiones activas a la base de datos
 ALTER DATABASE event_management SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 GO
 

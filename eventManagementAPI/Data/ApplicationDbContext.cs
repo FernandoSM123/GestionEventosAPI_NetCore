@@ -10,6 +10,8 @@ namespace eventManagementAPI.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
 
+        public DbSet<Token> Tokens { get; set; }
+
 
         // Configuración del modelo a nivel de entidad y relaciones
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,6 +38,17 @@ namespace eventManagementAPI.Data
                 entity.Property(e => e.id).HasColumnName("pk_user_types");
                 entity.Property(e => e.name).HasColumnName("user_type_name");
                 entity.Property(e => e.description).HasColumnName("user_type_description");
+            });
+
+            // Tabla tokens
+            modelBuilder.Entity<Token>(entity =>
+            {
+                entity.ToTable("tokens");
+                entity.Property(e => e.id).HasColumnName("pk_tokens");
+                entity.Property(e => e.jwtToken).HasColumnName("jwt_token");
+                entity.Property(e => e.expiration).HasColumnName("expiration");
+                entity.Property(e => e.isRevoked).HasColumnName("is_revoked");
+                entity.Property(e => e.userId).HasColumnName("fk_users");
             });
 
             //Seeders
