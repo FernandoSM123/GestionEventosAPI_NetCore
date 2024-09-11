@@ -1,12 +1,26 @@
-﻿namespace eventManagementAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace eventManagementAPI.Models
 {
     public class Token
     {
-        public int id { get; set; }          // ID del token
-        public string jwtToken { get; set; } // El token JWT generado
-        public DateTime expiration { get; set; } // Fecha de expiración del token
+        [Key]
+        public int id { get; set; }  // ID del token
+
+        [Required]
+        public string jwtToken { get; set; }  // El token JWT generado
+
+        [Required]
+        public DateTime expiration { get; set; }  // Fecha de expiración del token
+
+        [Required]
         public bool isRevoked { get; set; }  // Si el token ha sido revocado
-        public int userId { get; set; }      // Relación con el usuario que tiene este token
-        public User user { get; set; }       // Propiedad de navegación al usuario
+
+        [Required]
+        public int userId { get; set; }  // Relación con el usuario que tiene este token
+
+        [ForeignKey("UserId")] 
+        public User user { get; set; }  // Propiedad de navegación al usuario
     }
 }

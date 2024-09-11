@@ -51,6 +51,74 @@ namespace eventManagementAPI.Data
                 entity.Property(e => e.userId).HasColumnName("fk_users");
             });
 
+            // Tabla provinces
+            modelBuilder.Entity<Province>(entity =>
+            {
+                entity.ToTable("Provinces");
+                entity.Property(e => e.id).HasColumnName("pk_provinces");
+                entity.Property(e => e.name).HasColumnName("province_name");
+            });
+
+            // Tabla cantons
+            modelBuilder.Entity<Canton>(entity =>
+            {
+                entity.ToTable("Cantons");
+                entity.Property(e => e.id).HasColumnName("pk_cantons");
+                entity.Property(e => e.name).HasColumnName("canton_name");
+                entity.Property(e => e.provinceId).HasColumnName("fk_provinces");
+            });
+
+            // Tabla districts
+            modelBuilder.Entity<District>(entity =>
+            {
+                entity.ToTable("Districts");
+                entity.Property(e => e.id).HasColumnName("pk_districts");
+                entity.Property(e => e.name).HasColumnName("district_name");
+                entity.Property(e => e.cantonId).HasColumnName("fk_cantons");
+            });
+
+            // Tabla events
+            modelBuilder.Entity<Event>(entity =>
+            {
+                entity.ToTable("Events");
+                //detalles basicos
+                entity.Property(e => e.id).HasColumnName("pk_events");
+                entity.Property(e => e.name).HasColumnName("event_name");
+                entity.Property(e => e.description).HasColumnName("event_description");
+                entity.Property(e => e.details).HasColumnName("event_details");
+                entity.Property(e => e.description).HasColumnName("event_description");
+
+                //detalles lugar
+                entity.Property(e => e.exactPlace).HasColumnName("exact_place");
+                entity.Property(e => e.provinceId).HasColumnName("fk_provinces");
+                entity.Property(e => e.cantonId).HasColumnName("fk_cantons");
+                entity.Property(e => e.districtId).HasColumnName("fk_districts");
+
+                //detalles de hora y dia
+                entity.Property(e => e.startingTime).HasColumnName("starting_time");
+                entity.Property(e => e.finishingTime).HasColumnName("finishing_time");
+                entity.Property(e => e.startDate).HasColumnName("start_date");
+                entity.Property(e => e.endDate).HasColumnName("end_date");
+
+                // Relación con la tabla Provinces (sin eliminación en cascada)
+                entity.HasOne(e => e.province)
+                      .WithMany(p => p.events)
+                      .HasForeignKey(e => e.provinceId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                // Relación con la tabla Cantons (sin eliminación en cascada)
+                entity.HasOne(e => e.canton)
+                      .WithMany(c => c.events)
+                      .HasForeignKey(e => e.cantonId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                // Relación con la tabla Districts (sin eliminación en cascada)
+                entity.HasOne(e => e.district)
+                      .WithMany(d => d.events)
+                      .HasForeignKey(e => e.districtId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
+
             //Seeders
             UserTypeSeeder.Seed(modelBuilder);
             UserSeeder.Seed(modelBuilder, 50);
