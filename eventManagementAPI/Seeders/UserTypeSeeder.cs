@@ -1,16 +1,24 @@
-﻿using eventManagementAPI.Models;
+﻿using Bogus;
+using eventManagementAPI.Data;
+using eventManagementAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eventManagementAPI.Seeders
 {
     public static class UserTypeSeeder
     {
-        public static void Seed(ModelBuilder modelBuilder)
+        public static void Seed(ApplicationDbContext context)
         {
-            modelBuilder.Entity<UserType>().HasData(
-                new UserType { id = 1, name = "Administrator", description = "User with full administrative rights" },
-                new UserType { id = 2, name = "Viewer", description = "User with read-only access" }
-            );
+            if (!context.UserTypes.Any())
+            {
+
+                context.UserTypes.AddRange(
+                      new UserType { name = "Admin", description = "Administrator role" },
+                      new UserType { name = "User", description = "Standard user role" }
+                  );
+
+                context.SaveChanges();
+            }
         }
     }
 }

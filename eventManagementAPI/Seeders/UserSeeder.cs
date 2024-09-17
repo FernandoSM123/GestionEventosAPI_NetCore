@@ -7,24 +7,30 @@ using Microsoft.EntityFrameworkCore;
 
 public static class UserSeeder
 {
-    public static void Seed(ModelBuilder modelBuilder, int numberOfUsers)
+    public static void Seed(ApplicationDbContext context, int numberOfUsers)
     {
         var faker = new Faker();
         var users = new List<User>();
 
-        for (int i = 1; i <= numberOfUsers; i++)
+        if (!context.Users.Any())
         {
-            users.Add(new User
+            for (int i = 1; i <= numberOfUsers; i++)
             {
-                id = i,
-                username = faker.Internet.UserName(),
-                lastname = faker.Name.LastName(),
-                cellphone = faker.Phone.PhoneNumber(),
-                email = faker.Internet.Email(),
-                password = BCrypt.Net.BCrypt.HashPassword("123"),
-                userTypeId = faker.Random.Int(1, 2) // Asigna aleatoriamente entre 'Administrator' (1) y 'Viewer' (2)
-            });
+                users.Add(new User
+                {
+                    username = faker.Internet.UserName(),
+                    lastname = faker.Name.LastName(),
+                    cellphone = faker.Phone.PhoneNumber(),
+                    email = faker.Internet.Email(),
+                    password = BCrypt.Net.BCrypt.HashPassword("123"),
+                    userTypeId = faker.Random.Int(1, 2) // Asigna aleatoriamente entre 'Administrator' (1) y 'Viewer' (2)
+                });
+            }
+
+            context.Users.AddRange(users);
+
+            context.SaveChanges();
         }
-        modelBuilder.Entity<User>().HasData(users);
+
     }
 }

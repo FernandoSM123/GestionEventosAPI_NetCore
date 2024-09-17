@@ -8,6 +8,7 @@ namespace eventManagementAPI.Data
         private readonly ApplicationDbContext _context;
         private readonly IUserRepository _userRepository;
         private readonly ITokenRepository _tokenRepository;
+        private readonly ILocationRepository _locationRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -16,6 +17,7 @@ namespace eventManagementAPI.Data
 
         public IUserRepository Users => _userRepository ?? new UserRepository(_context);
         public ITokenRepository Tokens => _tokenRepository ?? new TokenRepository(_context);
+        public ILocationRepository Locations => _locationRepository ?? new LocationRepository(_context);
 
         public async Task<bool> CompleteAsync()
         {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eventManagementAPI.DTOs;
+using eventManagementAPI.DTOs.UserDTOs;
 using eventManagementAPI.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eventManagementAPI.DTOs
+namespace eventManagementAPI.DTOs.UserDTOs
 {
     public class CreateUserDTO
     {

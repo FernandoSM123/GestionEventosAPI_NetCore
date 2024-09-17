@@ -1,4 +1,4 @@
-﻿namespace eventManagementAPI.DTOs
+﻿namespace eventManagementAPI.DTOs.UserDTOs
 {
     public class UserDTO
     {

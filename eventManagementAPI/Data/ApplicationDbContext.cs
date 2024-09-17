@@ -9,8 +9,11 @@ namespace eventManagementAPI.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-
         public DbSet<Token> Tokens { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Canton> Cantons { get; set; }
+        public DbSet<District> Districts { get; set; }
+        public DbSet<Event> Events { get; set; }
 
 
         // Configuración del modelo a nivel de entidad y relaciones
@@ -120,8 +123,15 @@ namespace eventManagementAPI.Data
             });
 
             //Seeders
-            UserTypeSeeder.Seed(modelBuilder);
-            UserSeeder.Seed(modelBuilder, 50);
+            //UserTypeSeeder.Seed(modelBuilder);
+            //UserSeeder.Seed(modelBuilder, 50);
+            //ProvinceSeeder.Seed(modelBuilder);
+            //CantonSeeder.Seed(modelBuilder);
+            //DistrictSeeder.Seed(modelBuilder);
+
+            //// Cargar distritos
+            //var districts = Districts.ToList();
+            //EventSeeder.Seed(modelBuilder, 50, districts);
         }
     }
 }
