@@ -12,7 +12,7 @@ using eventManagementAPI.Data;
 namespace eventManagementAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240917025936_eventManagementDB")]
+    [Migration("20240919031155_eventManagementDB")]
     partial class eventManagementDB
     {
         /// <inheritdoc />
@@ -33,6 +33,10 @@ namespace eventManagementAPI.Migrations
                         .HasColumnName("pk_cantons");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -63,6 +67,10 @@ namespace eventManagementAPI.Migrations
                     b.Property<int>("cantonId")
                         .HasColumnType("int")
                         .HasColumnName("fk_cantons");
+
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -153,6 +161,10 @@ namespace eventManagementAPI.Migrations
                         .HasColumnName("pk_provinces");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
 
                     b.Property<string>("name")
                         .IsRequired()

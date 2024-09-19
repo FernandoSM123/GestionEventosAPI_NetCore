@@ -31,6 +31,10 @@ namespace eventManagementAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -60,6 +64,10 @@ namespace eventManagementAPI.Migrations
                     b.Property<int>("cantonId")
                         .HasColumnType("int")
                         .HasColumnName("fk_cantons");
+
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -150,6 +158,10 @@ namespace eventManagementAPI.Migrations
                         .HasColumnName("pk_provinces");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("code")
+                        .HasColumnType("int")
+                        .HasColumnName("code");
 
                     b.Property<string>("name")
                         .IsRequired()

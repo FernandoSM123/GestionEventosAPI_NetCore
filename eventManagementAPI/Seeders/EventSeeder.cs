@@ -14,9 +14,13 @@ namespace eventManagementAPI.Seeders
                 var faker = new Faker();
                 var events = new List<Event>();
                 var districts = context.Districts.ToList();
+                var cantons = context.Cantons.ToList();
+                var provinces = context.Provinces.ToList();
 
                 for (int i = 1; i <= numOfEvents; i++)
                 {
+                    int daysToAdd = faker.Random.Number(0, 3);
+                    int monthsToAdd = faker.Random.Number(0, 3);
 
                     //generar dia random del mes actual
                     DateTime now = DateTime.Now;
@@ -25,12 +29,10 @@ namespace eventManagementAPI.Seeders
                     DateTime randomDate = new DateTime(now.Year, now.Month, randomDay);
 
                     //configurar fecha de inicio
-                    int daysToAdd = faker.Random.Number(1, 3);
-                    int monthsToAdd = faker.Random.Number(0, 3);
-                    DateTime startDate = randomDate.AddDays(daysToAdd);
+                    DateTime startDate = randomDate.AddMonths(monthsToAdd);
 
                     //configurar fecha de finalizacion
-                    DateTime endDate = randomDate.AddMonths(monthsToAdd);
+                    DateTime endDate = startDate.AddDays(daysToAdd);
 
                     //configurar hora de inicio
                     int randomHour1 = faker.Random.Number(0, 11);
@@ -42,25 +44,22 @@ namespace eventManagementAPI.Seeders
 
                     // Generar provincia, canton, distrito random
                     var district = faker.PickRandom(districts);
-                    string districtIdStr = district.id.ToString();
-                    int provinceId = int.Parse(districtIdStr.Substring(0, 1));
-                    int cantonId = int.Parse(districtIdStr.Substring(0, 3));
-                    int districtId = district.id;
+                    var canton = cantons.FirstOrDefault(c => c.id == district.cantonId);
+                    var province = provinces.FirstOrDefault(p => p.id == canton?.provinceId);
 
                     events.Add(new Event
                     {
-                        id = i,
                         name = string.Join(" ", faker.Lorem.Words(2)),
                         description = faker.Lorem.Sentence(),
                         details = faker.Lorem.Paragraph(),
                         exactPlace = faker.Address.StreetAddress(),
-                        provinceId = provinceId,
-                        cantonId = cantonId,
-                        districtId = districtId,
+                        provinceId = province?.id ?? 1,
+                        cantonId = canton?.id ?? 1,
+                        districtId = district.id,
                         startingTime = startingTime,
                         finishingTime = finishingTime,
-                        endDate = startDate,
-                        startDate = endDate,
+                        startDate = startDate,
+                        endDate = endDate,
                     });
                 }
                 context.Events.AddRange(events);

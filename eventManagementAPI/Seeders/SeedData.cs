@@ -16,9 +16,9 @@ namespace eventManagementAPI.Seeders
                     UserTypeSeeder.Seed(context);     
                     UserSeeder.Seed(context,50);
                     ProvinceSeeder.Seed(context);
-                    //CantonSeeder.Seed(context);
-                    //DistrictSeeder.Seed(context);
-                    //EventSeeder.Seed(context, 50);
+                    CantonSeeder.Seed(context);
+                    DistrictSeeder.Seed(context);
+                    EventSeeder.Seed(context, 50);
                 }
                 catch (Exception ex)
                 {

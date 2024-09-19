@@ -7,6 +7,7 @@ namespace eventManagementAPI.DTOs.LocationDTOs
     public class CantonDTO
     {
         public int id { get; set; }
+        public int code { get; set; }
 
         public string name { get; set; }
 

@@ -9,6 +9,9 @@ namespace eventManagementAPI.Models
         public int id { get; set; }
 
         [Required]
+        public int code { get; set; }
+
+        [Required]
         [MaxLength(50)]
         public string name { get; set; }
 

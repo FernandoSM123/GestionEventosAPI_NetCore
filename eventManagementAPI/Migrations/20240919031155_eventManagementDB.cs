@@ -17,6 +17,7 @@ namespace eventManagementAPI.Migrations
                 {
                     pk_provinces = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    code = table.Column<int>(type: "int", nullable: false),
                     province_name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -44,6 +45,7 @@ namespace eventManagementAPI.Migrations
                 {
                     pk_cantons = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    code = table.Column<int>(type: "int", nullable: false),
                     canton_name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     fk_provinces = table.Column<int>(type: "int", nullable: false)
                 },
@@ -88,6 +90,7 @@ namespace eventManagementAPI.Migrations
                 {
                     pk_districts = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    code = table.Column<int>(type: "int", nullable: false),
                     district_name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     fk_cantons = table.Column<int>(type: "int", nullable: false)
                 },

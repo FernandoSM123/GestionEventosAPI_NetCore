@@ -57,16 +57,18 @@ namespace eventManagementAPI.Data
             // Tabla provinces
             modelBuilder.Entity<Province>(entity =>
             {
-                entity.ToTable("Provinces");
+                entity.ToTable("provinces");
                 entity.Property(e => e.id).HasColumnName("pk_provinces");
+                entity.Property(e => e.code).HasColumnName("code");
                 entity.Property(e => e.name).HasColumnName("province_name");
             });
 
             // Tabla cantons
             modelBuilder.Entity<Canton>(entity =>
             {
-                entity.ToTable("Cantons");
+                entity.ToTable("cantons");
                 entity.Property(e => e.id).HasColumnName("pk_cantons");
+                entity.Property(e => e.code).HasColumnName("code");
                 entity.Property(e => e.name).HasColumnName("canton_name");
                 entity.Property(e => e.provinceId).HasColumnName("fk_provinces");
             });
@@ -74,8 +76,9 @@ namespace eventManagementAPI.Data
             // Tabla districts
             modelBuilder.Entity<District>(entity =>
             {
-                entity.ToTable("Districts");
+                entity.ToTable("districts");
                 entity.Property(e => e.id).HasColumnName("pk_districts");
+                entity.Property(e => e.code).HasColumnName("code");
                 entity.Property(e => e.name).HasColumnName("district_name");
                 entity.Property(e => e.cantonId).HasColumnName("fk_cantons");
             });
@@ -83,7 +86,7 @@ namespace eventManagementAPI.Data
             // Tabla events
             modelBuilder.Entity<Event>(entity =>
             {
-                entity.ToTable("Events");
+                entity.ToTable("events");
                 //detalles basicos
                 entity.Property(e => e.id).HasColumnName("pk_events");
                 entity.Property(e => e.name).HasColumnName("event_name");

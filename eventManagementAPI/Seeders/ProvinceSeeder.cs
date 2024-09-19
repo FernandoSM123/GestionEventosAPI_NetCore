@@ -12,13 +12,13 @@ namespace eventManagementAPI.Seeders
             {
 
                 var provinces = new List<Province> {
-                new Province { id = 1, name = "San José" },
-                new Province { id = 2, name = "Alajuela" },
-                new Province { id = 3, name = "Cartago" },
-                new Province { id = 4, name = "Heredia" },
-                new Province { id = 5, name = "Guanacaste" },
-                new Province { id = 6, name = "Puntarenas" },
-                new Province { id = 7, name = "Limón" }
+                new Province { code = 1, name = "San José" },
+                new Province { code = 2, name = "Alajuela" },
+                new Province { code = 3, name = "Cartago" },
+                new Province { code = 4, name = "Heredia" },
+                new Province { code = 5, name = "Guanacaste" },
+                new Province { code = 6, name = "Puntarenas" },
+                new Province { code = 7, name = "Limón" }
                 };
 
                 context.Provinces.AddRange(provinces);

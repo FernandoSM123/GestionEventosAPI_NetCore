@@ -16,15 +16,31 @@ public static class UserSeeder
         {
             for (int i = 1; i <= numberOfUsers; i++)
             {
-                users.Add(new User
+                if (i == 1)
                 {
-                    username = faker.Internet.UserName(),
-                    lastname = faker.Name.LastName(),
-                    cellphone = faker.Phone.PhoneNumber(),
-                    email = faker.Internet.Email(),
-                    password = BCrypt.Net.BCrypt.HashPassword("123"),
-                    userTypeId = faker.Random.Int(1, 2) // Asigna aleatoriamente entre 'Administrator' (1) y 'Viewer' (2)
-                });
+                    users.Add(new User
+                    {
+                        username = "John",
+                        lastname = "Doe",
+                        cellphone = "123456789",
+                        email = "John@gmail.com",
+                        password = BCrypt.Net.BCrypt.HashPassword("123"),
+                        userTypeId = 1
+                    });
+                }
+
+                else
+                {
+                    users.Add(new User
+                    {
+                        username = faker.Internet.UserName(),
+                        lastname = faker.Name.LastName(),
+                        cellphone = faker.Phone.PhoneNumber(),
+                        email = faker.Internet.Email(),
+                        password = BCrypt.Net.BCrypt.HashPassword("123"),
+                        userTypeId = faker.Random.Int(1, 2) // Asigna aleatoriamente entre 'Administrator' (1) y 'Viewer' (2)
+                    });
+                }
             }
 
             context.Users.AddRange(users);
