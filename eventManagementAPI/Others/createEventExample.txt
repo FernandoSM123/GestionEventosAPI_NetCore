@@ -1,0 +1,13 @@
+{
+  "name": "string",
+  "description": "string",
+  "details": "string",
+  "exactPlace": "string",
+  "provinceId": 1,
+  "cantonId": 1,
+  "districtId": 933,
+  "startingTime": "09:00:00",
+  "finishingTime": "18:00:00",
+  "startDate": "2024-10-22T09:00:00",
+  "endDate": "2024-10-22T18:00:00"
+}
