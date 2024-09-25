@@ -73,12 +73,14 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 //Servicios
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 
 // Configuración de Swagger/OpenAPI con JWT Bearer
 builder.Services.AddSwaggerGen(c =>

@@ -19,6 +19,7 @@ namespace eventManagementAPI.Seeders
                     CantonSeeder.Seed(context);
                     DistrictSeeder.Seed(context);
                     EventSeeder.Seed(context, 50);
+                    RoleSeeder.Seed(context, 50);
                 }
                 catch (Exception ex)
                 {

@@ -12,7 +12,7 @@ using eventManagementAPI.Data;
 namespace eventManagementAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240919031155_eventManagementDB")]
+    [Migration("20240925032211_eventManagementDB")]
     partial class eventManagementDB
     {
         /// <inheritdoc />
@@ -52,7 +52,7 @@ namespace eventManagementAPI.Migrations
 
                     b.HasIndex("provinceId");
 
-                    b.ToTable("Cantons", (string)null);
+                    b.ToTable("cantons", (string)null);
                 });
 
             modelBuilder.Entity("eventManagementAPI.Models.District", b =>
@@ -82,7 +82,7 @@ namespace eventManagementAPI.Migrations
 
                     b.HasIndex("cantonId");
 
-                    b.ToTable("Districts", (string)null);
+                    b.ToTable("districts", (string)null);
                 });
 
             modelBuilder.Entity("eventManagementAPI.Models.Event", b =>
@@ -150,7 +150,7 @@ namespace eventManagementAPI.Migrations
 
                     b.HasIndex("provinceId");
 
-                    b.ToTable("Events", (string)null);
+                    b.ToTable("events", (string)null);
                 });
 
             modelBuilder.Entity("eventManagementAPI.Models.Province", b =>
@@ -174,7 +174,31 @@ namespace eventManagementAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Provinces", (string)null);
+                    b.ToTable("provinces", (string)null);
+                });
+
+            modelBuilder.Entity("eventManagementAPI.Models.Role", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("pk_roles");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("descripcion")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("role_description");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("id");
+
+                    b.ToTable("roles", (string)null);
                 });
 
             modelBuilder.Entity("eventManagementAPI.Models.Token", b =>

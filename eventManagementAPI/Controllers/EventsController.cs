@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using eventManagementAPI.DTOs.EventDTOs;
-using eventManagementAPI.DTOs.UserDTOs;
 using eventManagementAPI.Models;
 using eventManagementAPI.Services;
 using eventManagementAPI.Services.IServices;

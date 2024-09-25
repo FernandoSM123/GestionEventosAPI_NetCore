@@ -12,7 +12,7 @@ namespace eventManagementAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Provinces",
+                name: "provinces",
                 columns: table => new
                 {
                     pk_provinces = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,21 @@ namespace eventManagementAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Provinces", x => x.pk_provinces);
+                    table.PrimaryKey("PK_provinces", x => x.pk_provinces);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "roles",
+                columns: table => new
+                {
+                    pk_roles = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    role_name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    role_description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_roles", x => x.pk_roles);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,7 +54,7 @@ namespace eventManagementAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cantons",
+                name: "cantons",
                 columns: table => new
                 {
                     pk_cantons = table.Column<int>(type: "int", nullable: false)
@@ -51,11 +65,11 @@ namespace eventManagementAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cantons", x => x.pk_cantons);
+                    table.PrimaryKey("PK_cantons", x => x.pk_cantons);
                     table.ForeignKey(
-                        name: "FK_Cantons_Provinces_fk_provinces",
+                        name: "FK_cantons_provinces_fk_provinces",
                         column: x => x.fk_provinces,
-                        principalTable: "Provinces",
+                        principalTable: "provinces",
                         principalColumn: "pk_provinces",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -85,7 +99,7 @@ namespace eventManagementAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Districts",
+                name: "districts",
                 columns: table => new
                 {
                     pk_districts = table.Column<int>(type: "int", nullable: false)
@@ -96,11 +110,11 @@ namespace eventManagementAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Districts", x => x.pk_districts);
+                    table.PrimaryKey("PK_districts", x => x.pk_districts);
                     table.ForeignKey(
-                        name: "FK_Districts_Cantons_fk_cantons",
+                        name: "FK_districts_cantons_fk_cantons",
                         column: x => x.fk_cantons,
-                        principalTable: "Cantons",
+                        principalTable: "cantons",
                         principalColumn: "pk_cantons",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -129,7 +143,7 @@ namespace eventManagementAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Events",
+                name: "events",
                 columns: table => new
                 {
                     pk_events = table.Column<int>(type: "int", nullable: false)
@@ -148,50 +162,50 @@ namespace eventManagementAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.pk_events);
+                    table.PrimaryKey("PK_events", x => x.pk_events);
                     table.ForeignKey(
-                        name: "FK_Events_Cantons_fk_cantons",
+                        name: "FK_events_cantons_fk_cantons",
                         column: x => x.fk_cantons,
-                        principalTable: "Cantons",
+                        principalTable: "cantons",
                         principalColumn: "pk_cantons",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Events_Districts_fk_districts",
+                        name: "FK_events_districts_fk_districts",
                         column: x => x.fk_districts,
-                        principalTable: "Districts",
+                        principalTable: "districts",
                         principalColumn: "pk_districts",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Events_Provinces_fk_provinces",
+                        name: "FK_events_provinces_fk_provinces",
                         column: x => x.fk_provinces,
-                        principalTable: "Provinces",
+                        principalTable: "provinces",
                         principalColumn: "pk_provinces",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cantons_fk_provinces",
-                table: "Cantons",
+                name: "IX_cantons_fk_provinces",
+                table: "cantons",
                 column: "fk_provinces");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Districts_fk_cantons",
-                table: "Districts",
+                name: "IX_districts_fk_cantons",
+                table: "districts",
                 column: "fk_cantons");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_fk_cantons",
-                table: "Events",
+                name: "IX_events_fk_cantons",
+                table: "events",
                 column: "fk_cantons");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_fk_districts",
-                table: "Events",
+                name: "IX_events_fk_districts",
+                table: "events",
                 column: "fk_districts");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_fk_provinces",
-                table: "Events",
+                name: "IX_events_fk_provinces",
+                table: "events",
                 column: "fk_provinces");
 
             migrationBuilder.CreateIndex(
@@ -209,25 +223,28 @@ namespace eventManagementAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "events");
+
+            migrationBuilder.DropTable(
+                name: "roles");
 
             migrationBuilder.DropTable(
                 name: "tokens");
 
             migrationBuilder.DropTable(
-                name: "Districts");
+                name: "districts");
 
             migrationBuilder.DropTable(
                 name: "users");
 
             migrationBuilder.DropTable(
-                name: "Cantons");
+                name: "cantons");
 
             migrationBuilder.DropTable(
                 name: "user_types");
 
             migrationBuilder.DropTable(
-                name: "Provinces");
+                name: "provinces");
         }
     }
 }

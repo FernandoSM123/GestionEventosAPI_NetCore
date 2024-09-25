@@ -10,6 +10,7 @@ namespace eventManagementAPI.Data
         private readonly ITokenRepository _tokenRepository;
         private readonly ILocationRepository _locationRepository;
         private readonly IEventRepository _eventRepository;
+        private readonly IRoleRepository _roleRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -20,6 +21,7 @@ namespace eventManagementAPI.Data
         public ITokenRepository Tokens => _tokenRepository ?? new TokenRepository(_context);
         public ILocationRepository Locations => _locationRepository ?? new LocationRepository(_context);
         public IEventRepository Events => _eventRepository ?? new EventRepository(_context);
+        public IRoleRepository Roles => _roleRepository ?? new RoleRepository(_context);
 
         public async Task<bool> CompleteAsync()
         {

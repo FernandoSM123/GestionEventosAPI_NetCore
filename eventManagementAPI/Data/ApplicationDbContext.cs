@@ -14,6 +14,7 @@ namespace eventManagementAPI.Data
         public DbSet<Canton> Cantons { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
 
         // Configuración del modelo a nivel de entidad y relaciones
@@ -123,6 +124,15 @@ namespace eventManagementAPI.Data
                       .WithMany(d => d.events)
                       .HasForeignKey(e => e.districtId)
                       .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Tabla Roles
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.ToTable("roles");
+                entity.Property(e => e.id).HasColumnName("pk_roles");
+                entity.Property(e => e.name).HasColumnName("role_name");
+                entity.Property(e => e.descripcion).HasColumnName("role_description");
             });
 
             //Seeders

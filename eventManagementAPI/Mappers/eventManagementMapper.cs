@@ -3,6 +3,7 @@ using eventManagementAPI.DTOs;
 using eventManagementAPI.DTOs.LocationDTOs;
 using eventManagementAPI.DTOs.UserDTOs;
 using eventManagementAPI.DTOs.EventDTOs;
+using eventManagementAPI.DTOs.RoleDTOs;
 using eventManagementAPI.Models;
 
 namespace eventManagementAPI.Mappers
@@ -31,9 +32,12 @@ namespace eventManagementAPI.Mappers
 
 
             CreateMap<Event, CreateEventDTO>().ReverseMap();
-
-
             CreateMap<Event, UpdateEventDTO>().ReverseMap();
+
+            //Role
+            CreateMap<Role, RoleDTO>().ReverseMap();
+            CreateMap<Role, UpdateRoleDTO>().ReverseMap();
+            CreateMap<Role, CreateRoleDTO>().ReverseMap();
         }
     }
 }

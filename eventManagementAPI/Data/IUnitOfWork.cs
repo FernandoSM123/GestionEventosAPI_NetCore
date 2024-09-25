@@ -8,6 +8,7 @@ namespace eventManagementAPI.Data
         ITokenRepository Tokens { get; }
         ILocationRepository Locations { get; }
         IEventRepository Events { get; }
+        IRoleRepository Roles { get; }
         Task<bool> CompleteAsync();
     }
 }
